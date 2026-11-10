@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#06282d" />
+  <title>Dayung Duo — Pendayung</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./controller.css" />
+</head>
+<body class="controller-body" data-player="1">
+  <div class="controller-noise" aria-hidden="true"></div>
+
+  <main class="controller-shell">
+    <header class="controller-header">
+      <div class="controller-brand">
+        <span class="controller-brand-mark">DD</span>
+        <div>
+          <span>DAYUNG DUO</span>
+          <small>LAGUNA RALLY</small>
+        </div>
+      </div>
+      <div class="controller-room">
+        <span>ROOM</span>
+        <strong id="room-value">·····</strong>
+      </div>
+    </header>
+
+    <section class="player-identity">
+      <div class="player-number-wrap">
+        <span class="player-number-label">PEMAIN</span>
+        <div class="player-number" id="player-number">1</div>
+      </div>
+      <div class="player-side-copy">
+        <p class="controller-eyebrow" id="side-label">SISI KIRI PERAHU</p>
+        <h1 id="player-role">Pendayung Kiri</h1>
+        <p id="player-instruction">Satu dayung memutar perahu <strong>20° ke kanan</strong>. Tekan tombol untuk mengayuh.</p>
+      </div>
+    </section>
+
+    <section class="boat-diagram" aria-hidden="true">
+      <div class="diagram-water">
+        <span class="water-line wl-1"></span>
+        <span class="water-line wl-2"></span>
+        <span class="water-line wl-3"></span>
+      </div>
+      <svg class="boat-svg" viewBox="0 0 360 190" role="presentation">
+        <path class="boat-hull" d="M180 14C150 33 126 57 107 88c-13 21-19 42-11 58 16 14 48 20 84 20s68-6 84-20c8-16 2-37-11-58-19-31-43-55-73-74Z" />
+        <path class="boat-inner" d="M180 34c-23 14-40 32-56 58-10 16-14 31-9 41 16 11 39 15 65 15s49-4 65-15c5-10 1-25-9-41-16-26-33-44-56-58Z" />
+        <path class="boat-plank" d="M115 117h130M121 134h118" />
+        <path class="boat-seat" d="M121 86h118M127 145h106" />
+        <path class="boat-keel" d="M180 43v104" />
+        <path class="bow-mark" d="m180 16 8 14-8-3-8 3 8-14Z" />
+        <circle class="seat-person seat-person--p1" cx="146" cy="105" r="11" />
+        <circle class="seat-person seat-person--p2" cx="214" cy="105" r="11" />
+        <path class="row-line row-line--1" d="M146 105 63 142" />
+        <path class="row-line row-line--2" d="M214 105 297 142" />
+        <path class="row-arc row-arc--1" d="M101 88c-17 18-17 37-2 52" />
+        <path class="row-arc row-arc--2" d="M259 88c17 18 17 37 2 52" />
+        <path class="arrow-head arrow-head--1" d="m99 144-9-5 5 13 4-8Z" />
+        <path class="arrow-head arrow-head--2" d="m261 144 9-5-5 13-4-8Z" />
+        <circle class="pivot-ring pivot-ring--p1" cx="146" cy="105" r="25" />
+        <circle class="pivot-ring pivot-ring--p2" cx="214" cy="105" r="25" />
+        <circle class="pivot-dot pivot-dot--p1" cx="146" cy="105" r="3" />
+        <circle class="pivot-dot pivot-dot--p2" cx="214" cy="105" r="3" />
+      </svg>
+      <div class="turn-callout">
+        <span id="turn-arrow">↷</span>
+        <span id="turn-text">PUTAR KE KANAN</span>
+      </div>
+    </section>
+
+    <div class="controller-status-row">
+      <div id="connection-pill" class="connection-pill" data-state="connecting">
+        <i></i>
+        <span id="connection-text">Menghubungkan…</span>
+      </div>
+      <div id="race-pill" class="race-pill is-hidden">
+        <span id="race-progress">CP 0 / 6</span>
+        <span class="race-dot"></span>
+        <span id="race-time">00:00.0</span>
+      </div>
+      <div class="haptic-status" id="haptic-status">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm5 15a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Zm-1-12.5v8h2v-8h-2Z"/></svg>
+        <span>Getar aktif</span>
+      </div>
+    </div>
+
+    <div class="row-zone">
+      <div class="button-orbit orbit-1" aria-hidden="true"></div>
+      <div class="button-orbit orbit-2" aria-hidden="true"></div>
+      <button id="row-button" class="row-button" type="button" disabled aria-label="Dayung">
+        <span class="row-button-inner">
+          <span class="oar-icon" aria-hidden="true">
+            <svg viewBox="0 0 68 68"><path d="M15 53 47 21" /><path d="M44 12c8-2 12 2 10 10l-6 7-11-11 7-6Z" /><path d="m13 49 6 6" /></svg>
+          </span>
+          <span class="row-button-copy">
+            <strong id="button-label">DAYUNG</strong>
+            <small id="button-sub">Tekan untuk mengayuh</small>
+          </span>
+        </span>
+        <span class="row-button-ripple"></span>
+      </button>
+      <p class="hold-hint" id="hold-hint">Tahan tombol untuk mendayung berulang</p>
+    </div>
+
+    <footer class="controller-footer">
+      <span id="footer-hint">Dayung berdua bersamaan = lurus &amp; lebih cepat</span>
+      <span class="controller-meta">SATU TOMBOL · DUA KRU</span>
+    </footer>
+  </main>
+
+  <div id="controller-toast" class="controller-toast" aria-live="polite"></div>
+
+  <section id="result-overlay" class="result-overlay is-hidden" aria-labelledby="result-title">
+    <div class="result-card">
+      <p class="controller-eyebrow">GARIS FINIS</p>
+      <h2 id="result-title">Selesai!</h2>
+      <p id="result-subtitle">Perahu sampai di tujuan.</p>
+      <div class="result-time" id="result-time">00:00.0</div>
+      <div class="result-stats">
+        <div><span>Checkpoint</span><strong id="result-checkpoints">6/6</strong></div>
+        <div><span>Tabrakan</span><strong id="result-bumps">0</strong></div>
+      </div>
+      <p class="result-wait">Lihat layar utama untuk mengulang balapan.</p>
+    </div>
+  </section>
+
+  <section id="disconnect-overlay" class="disconnect-overlay is-hidden" aria-labelledby="disconnect-title">
+    <div class="disconnect-card">
+      <div class="signal-icon" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <p class="controller-eyebrow">KONEKSI TERPUTUS</p>
+      <h2 id="disconnect-title">Sinyal hilang.</h2>
+      <p id="disconnect-message">Mencoba menyambung ulang ke perahu…</p>
+      <button id="retry-button" type="button">COBA LAGI</button>
+      <span class="disconnect-tip">Pastikan HP dan komputer ada di Wi-Fi yang sama.</span>
+    </div>
+  </section>
+
+  <script src="./config.js"></script>
+  <script src="./controller.bundle.js"></script>
+</body>
+</html>
