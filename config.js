@@ -8,6 +8,7 @@
  * SIGNALING: opsional. Kosongkan (null) untuk memakai PeerJS Cloud.
  * Isi host/port/path jika memakai PeerServer sendiri.
  */
+CONTROLLER_BASE_URL = "https://dymas101.github.io/dayung-duo-controller/";
 window.DAYUNG_CONFIG = {
   SIGNALING: null,
   ICE_SERVERS: [
